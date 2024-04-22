@@ -1,0 +1,10 @@
+[Unit]
+Description=Dell G15 5525 Power Controller Daemon
+
+[Service]
+Type=simple
+WorkingDirectory=/home/gabriel/.local/opt/g15
+ExecStart=/usr/bin/python main.py -d
+
+[Install]
+WantedBy=multi-user.target

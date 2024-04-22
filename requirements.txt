@@ -1,0 +1,4 @@
+evdev
+pexpect
+pygobject
+setuptools
