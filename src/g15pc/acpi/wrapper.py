@@ -61,10 +61,70 @@ def check_laptop_model():
     return is_g15
 
 
+def get_gpu_temp():
+    res = SHELL.exec(calls.get_gpu_temp(), parse=True)
+    return res
+
+
+def get_cpu_temp():
+    res = SHELL.exec(calls.get_cpu_temp(), parse=True)
+    return res
+
+
+def set_fan1_boost(speed):
+    if 255 < speed < 0:
+        LOG.error('Invalid Speed %d', speed)
+        return
+    res = SHELL.exec(calls.set_fan1_boost(speed), parse=True)
+    return res
+
+
+def set_fan2_boost(speed):
+    if 255 < speed < 0:
+        LOG.error('Invalid Speed %d', speed)
+        return
+    res = SHELL.exec(calls.set_fan2_boost(speed), parse=True)
+    return res
+
+
+def get_fan1_boost():
+    res = SHELL.exec(calls.get_fan1_boost(), parse=True)
+    return res
+
+
+def get_fan2_boost():
+    res = SHELL.exec(calls.get_fan2_boost(), parse=True)
+    return res
+
+
+def get_fan1_rpm():
+    res = SHELL.exec(calls.get_fan1_rpm(), parse=True)
+    return res
+
+
+def get_fan2_rpm():
+    res = SHELL.exec(calls.get_fan2_rpm(), parse=True)
+    return res
+
+
 MESSAGE_TYPES = {
     'set_power_mode': set_power_mode,
     'get_power_mode': get_power_mode,
     'get_laptop_model': get_laptop_model,
+    'set_fan1_boost': get_fan1_boost,
+    'get_fan1_boost': get_fan1_boost,
+    'get_fan1_rpm': get_fan1_boost,
+    'set_fan2_boost': get_fan2_boost,
+    'get_fan2_boost': get_fan2_boost,
+    'get_fan2_rpm': get_fan2_boost,
+    'get_cpu_temp': get_cpu_temp,
+    'get_gpu_temp': get_gpu_temp,
     'toggle_G_mode': toggle_g_mode,
     'get_G_mode': get_g_mode
 }
+
+
+if __name__ == '__main__':
+    # create_shell()
+    # print(int(get_cpu_temp(), 16))
+    # print(int(get_gpu_temp(), 16))

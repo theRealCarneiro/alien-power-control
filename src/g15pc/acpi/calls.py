@@ -114,8 +114,55 @@ def toggle_g_mode():
     return format_acpi_cmd(*args)
 
 
+def get_gpu_temp():
+    args = CallTypes('GET_GPU_TEMP').value
+    return format_acpi_cmd(*args)
+
+
+def get_cpu_temp():
+    args = CallTypes('GET_CPU_TEMP').value
+    return format_acpi_cmd(*args)
+
+
+def get_fan1_boost():
+    args = CallTypes('GET_FAN1_BOOST').value
+    return format_acpi_cmd(*args)
+
+
+def get_fan2_boost():
+    args = CallTypes('GET_FAN2_BOOST').value
+    return format_acpi_cmd(*args)
+
+
+def get_fan1_rpm():
+    args = CallTypes('GET_FAN1_RPM').value
+    return format_acpi_cmd(*args)
+
+
+def get_fan2_rpm():
+    args = CallTypes('GET_FAN2_RPM').value
+    return format_acpi_cmd(*args)
+
+
+def set_fan1_boost(speed):
+    args = CallTypes('SET_FAN1_BOOST').value
+    hex_speed = hex(speed)
+    return format_acpi_cmd(*args, hex_speed)
+
+
+def set_fan2_boost(speed):
+    args = CallTypes('SET_FAN2_BOOST').value
+    hex_speed = hex(speed)
+    return format_acpi_cmd(*args, hex_speed)
+
+
 if __name__ == '__main__':
-    print(get_g_mode())
+    # print(set_fan1_boost(12))
+    # print(set_fan2_boost(12))
+    # print(set_power_mode('G_MODE'))
+    # print(set_power_mode('USTT_QUIET'))
+    # print(set_power_mode('USTT_BALANCED'))
+    # print(set_fan1_boost())
     # print(format_acpi_cmd(*CallTypes('get_g_mode').value))
     # print(get_acpi_command())
     # print(PowerModes('0xa3').name)
